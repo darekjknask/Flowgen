@@ -43,6 +43,7 @@ flowdoc/aux_files/runphase: $(CCSOURCEFILES) simple_demo_src.cpp $(FLOWGEN_DIR)m
 	@echo "cpp-to-graphs: depends on $^"
 	python3 $(FLOWGEN_DIR)makeflows.py simple_demo_src.cpp -I./include
 	python3 $(FLOWGEN_DIR)makeflows.py src/source1.cpp -I./include
+	sed -i 's/#.*://g' flowdoc/aux_files/*.txt
 	java -jar $(FLOWGEN_DIR)plantuml.jar flowdoc/aux_files/*.txt
 	cat <<EOF > flowdoc/aux_files/runphase
 	
